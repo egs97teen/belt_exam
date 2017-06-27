@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Register or Login</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'belt_exam_app/css/index.css' %}">
+    </head>
+    <body>
+    	<div id='error'>
+    	{% if messages  %}
+			{% for message in messages %}
+				<p>{{message}}</p>
+			{% endfor %}
+		{% endif %}
+    	</div>
+        <h1>Registration</h1>
+    	<form action='{% url "register" %}' method='POST'>
+            {% csrf_token %}
+            <p><label for='first_name'>First Name:<input type='text' name='first_name'></label></p>
+            <p><label for='last_name'>Last Name:<input type='text' name='last_name'></label></p>
+            <p><label for='email'>Email:<input type='text' name='email'></label></p>
+            <p><label for='birthday'>Birthday:<input type='date' name='birthday'></label></p>
+            <p>* Password should be at least 8 characters</p>
+            <p><label for='password'>Password:<input type='password' name='password'></label></p>
+            <p><label for='confirm_pw'>Confirm Password:<input type='password' name='confirm_pw'></label></p>
+            <p><input type='submit' value='register'>
+        </form>
+        <h1>Login</h1>
+        <form action='{% url "login" %}' method='POST'>
+            {% csrf_token %}
+            <p><label for='email'>Email:<input type='text' name='login_email'></label></p>
+            <p><label for='password'>Password:<input type='password' name='login_password'></label></p>
+            <p><input type='submit' value='Login'></p>
+        </form>
+    </body>
+</html>
