@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Add Plan</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'belt_exam_app/css/travels.css' %}">
+    </head>
+    <header> 
+        <a href='{% url "travels" %}'>Home</a>
+        <a href='{% url "logout" %}'>Log Out</a>
+    </header>
+    <body>
+        <h1>Add a Trip</h1>
+        <div id="errors">
+        {% if messages  %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        </div>
+        <form action='{% url "add_trip" %}' method='POST'>
+            {% csrf_token %}
+             <p><label for='destination'>Destination:<input type='text' name='destination'></label></p>
+             <p><label for='description'>Description:<input type='text' name='description'></label></p>
+             <p><label for='start_date'>Travel Date From:<input type='date' name='start_date'></label></p>
+             <p><label for='end_date'>Travel Date To:<input type='date' name='end_date'></label></p>
+             <p><input type='submit' value='Add'>
+        </form>
+    </body>
+</html>

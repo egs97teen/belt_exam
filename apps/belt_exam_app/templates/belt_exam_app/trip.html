@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Travel Dashboard</title>
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'belt_exam_app/css/travels.css' %}">
+    </head>
+    <header>     
+        <a href='{% url "travels" %}'>Home</a>
+        <a href='{% url "logout" %}'>Log Out</a>
+    </header>
+    <body>
+        <div id="trip_details">
+            <h1>{{trip.destination}}</h1>
+                <p>Planned By: {{trip.planner.name}}</p>
+                <p>Description: {{trip.plan}}</p>
+                <p>Travel Date From: {{trip.start_date}}</p>
+                <p>Travel Date To: {{trip.end_date}}</p>
+        </div>
+        <div id="travelers">
+        {% if travelers %}
+            <h2>Other users joining the trip:</h2>
+            {% for traveler in travelers %}
+                <p>{{traveler.name}}</p>
+            {% endfor %}
+        {% endif %}
+        </div>
+    </body>
+</html>
