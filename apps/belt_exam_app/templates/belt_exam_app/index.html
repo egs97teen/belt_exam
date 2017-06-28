@@ -17,7 +17,7 @@
         <h1>Registration</h1>
     	<form action='{% url "register" %}' method='POST'>
             {% csrf_token %}
-            <p><label for='name'>First Name:<input type='text' name='name'></label></p>
+            <p><label for='name'>Name:<input type='text' name='name'></label></p>
             <p><label for='username'>Username:<input type='text' name='username'></label></p>
             <p><label for='password'>Password:<input type='password' name='password'></label></p>
             <p>* Password should be at least 8 characters</p>
